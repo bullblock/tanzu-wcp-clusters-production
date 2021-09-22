@@ -13,7 +13,29 @@ spec:
       storageClass: wcp
     workers:
       count: 1
+      class: best-effort-large
+      storageClass: wcp
+  settings:
+    storage:
+      defaultClass: wcp
+
+---
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: prd-cls-2
+  namespace: production
+spec:
+  distribution:
+    fullVersion: v1.20.7---vmware.1-tkg.1.7fb9067
+  topology:
+    controlPlane:
+      count: 1
       class: best-effort-medium
+      storageClass: wcp
+    workers:
+      count: 1
+      class: best-effort-large
       storageClass: wcp
   settings:
     storage:
