@@ -11,11 +11,11 @@ spec:
   topology:
     controlPlane:
       count: 1
-      class: best-effort-large
+      class: best-effort-medium
       storageClass: wcp
     workers:
       count: 1
-      class: best-effort-xlarge
+      class: best-effort-large
       storageClass: wcp
   settings:
     storage:
