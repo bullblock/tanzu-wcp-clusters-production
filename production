@@ -43,3 +43,4 @@ spec:
   settings:
     storage:
       defaultClass: wcp
+
