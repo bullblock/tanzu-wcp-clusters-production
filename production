@@ -42,7 +42,7 @@ spec:
         reference:
           name: v1.21.6---vmware.1-tkg.1.b3d708a
     nodePools:
-    - name: sock-shop-pool
+    - name: tap-pool
       replicas: 6
       vmClass: best-effort-large
       storageClass: dc1-iscsi
