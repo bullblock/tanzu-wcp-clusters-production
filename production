@@ -75,4 +75,3 @@ spec:
     network:
       cni:
         name: antrea
-
