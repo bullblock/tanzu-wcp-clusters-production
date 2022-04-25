@@ -6,7 +6,7 @@ metadata:
 spec:
   topology:
     controlPlane:
-      replicas: 3
+      replicas: 1
       vmClass: guaranteed-medium
       storageClass: dc1-cls1-datastore
       volumes:
@@ -16,10 +16,10 @@ spec:
             storage: 16Gi
       tkr:
         reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
+          name: v1.20.12---vmware.1-tkg.1.b9a42f3
     nodePools:
     - name: worker-nodepool-vsphere
-      replicas: 3
+      replicas: 1
       vmClass: guaranteed-large
       storageClass: dc1-cls1-datastore
       volumes:
@@ -29,7 +29,7 @@ spec:
             storage: 64Gi
       tkr:
         reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
+          name: v1.20.12---vmware.1-tkg.1.b9a42f3
   settings:
     storage:
       defaultClass: dc1-cls1-datastore
@@ -40,7 +40,7 @@ spec:
 apiVersion: run.tanzu.vmware.com/v1alpha2
 kind: TanzuKubernetesCluster
 metadata:
-  name: sock-shop-cluster
+  name: sock-shop
   namespace: production
 spec:
   topology:
@@ -58,46 +58,7 @@ spec:
           name: v1.21.6---vmware.1-tkg.1.b3d708a
     nodePools:
     - name: worker-nodepool-vsphere
-      replicas: 3
-      vmClass: guaranteed-large
-      storageClass: dc1-cls1-datastore
-      volumes:
-        - name: containerd
-          mountPath: /var/lib/containerd
-          capacity:
-            storage: 64Gi
-      tkr:
-        reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
-  settings:
-    storage:
-      defaultClass: dc1-cls1-datastore
-    network:
-      cni:
-        name: antrea
----
-apiVersion: run.tanzu.vmware.com/v1alpha2
-kind: TanzuKubernetesCluster
-metadata:
-  name: pipeline-cls
-  namespace: production
-spec:
-  topology:
-    controlPlane:
-      replicas: 3
-      vmClass: guaranteed-medium
-      storageClass: dc1-cls1-datastore
-      volumes:
-        - name: etcd
-          mountPath: /var/lib/etcd
-          capacity:
-            storage: 16Gi
-      tkr:
-        reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
-    nodePools:
-    - name: worker-nodepool-vsphere
-      replicas: 3
+      replicas: 4
       vmClass: guaranteed-large
       storageClass: dc1-cls1-datastore
       volumes:
