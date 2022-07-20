@@ -51,3 +51,57 @@ spec:
 #            data: LS0tLS1C...LS0tCg==
 #          - name: CompanyInternalCA-2
 #            data: MTLtMT1C...MT0tPg==
+---
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: sock-shop
+  namespace: production
+spec:
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: guaranteed-medium
+      storageClass: dc2-cls2-ds2
+      volumes:
+        - name: etcd
+          mountPath: /var/lib/etcd
+          capacity:
+            storage: 16Gi
+      tkr:
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+    nodePools:
+    - name: pipe-build-cls-1-node-pool-1
+      replicas: 1
+      vmClass: guaranteed-large
+      storageClass: dc2-cls2-ds2
+      volumes:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          capacity:
+            storage: 64Gi
+      tkr:
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+  settings:
+    storage:
+      defaultClass: dc2-cls2-ds2
+    network:
+      cni:
+        name: antrea
+#      services:
+#        cidrBlocks: ["198.53.100.0/16"]
+#      pods:
+#        cidrBlocks: ["192.0.5.0/16"]
+#      serviceDomain: managedcluster.local
+#      proxy:
+#        httpProxy: http://<user>:<pwd>@<ip>:<port>
+#        httpsProxy: http://<user>:<pwd>@<ip>:<port>
+#        noProxy: [10.246.0.0/16,192.168.144.0/20,192.168.128.0/20]
+#      trust:
+#        additionalTrustedCAs:
+#          - name: CompanyInternalCA-1
+#            data: LS0tLS1C...LS0tCg==
+#          - name: CompanyInternalCA-2
+#            data: MTLtMT1C...MT0tPg==
