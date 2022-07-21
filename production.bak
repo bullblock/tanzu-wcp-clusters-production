@@ -7,7 +7,7 @@ spec:
   topology:
     controlPlane:
       replicas: 1
-      vmClass: guaranteed-medium
+      vmClass: guaranteed-small
       storageClass: dc2-cls2-ds2
       volumes:
         - name: etcd
@@ -20,7 +20,7 @@ spec:
     nodePools:
     - name: pip-cls-1-node-pool-1
       replicas: 1
-      vmClass: guaranteed-large
+      vmClass: guaranteed-small
       storageClass: dc2-cls2-ds2
       volumes:
         - name: containerd
