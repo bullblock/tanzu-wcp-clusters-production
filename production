@@ -16,7 +16,7 @@ spec:
             storage: 16Gi
       tkr:
         reference:
-          name: v1.16.12---vmware.1-tkg.1.da7afe7
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
     nodePools:
     - name: pip-cls-1-node-pool-1
       replicas: 1
@@ -29,7 +29,7 @@ spec:
             storage: 64Gi
       tkr:
         reference:
-          name: v1.16.12---vmware.1-tkg.1.da7afe7
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
   settings:
     storage:
       defaultClass: dc1-cls1-ds1
